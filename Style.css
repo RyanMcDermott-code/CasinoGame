@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100;
+}
+
+.roulette-wheel {
+   width: 300px;
+   height: 300px;
+   border: 2px solid black;
+   border-radius: 50%;
+   background-color: brown;
+   margin-bottom: 20px;
+   position: relative; 
+}
+
+.betting-area {
+   display: flex;
+   justify-content: space-around;
+   width: 80px;
+   margin-bottom: 20px;
+}
+
+.bet-option {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#spin-btn {
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#spin-btn:hover {
+    background-color: #0056b3;
+}
