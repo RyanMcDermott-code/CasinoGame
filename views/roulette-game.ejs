@@ -5,28 +5,18 @@
 </head>
 <body>
     <h1>Roulette Game</h1>
-    <button id="betRed">Bet on Red</button>
-    <button id="betBlack">Bet on Black</button>
-    <button id="betNumber">Bet on Number</button>
-    <input type="number" id="numberInput" min="0" max="36">
-    <p id="result"></p>
-
-    <script src="../js/roulette-game.js"></script>
-    <script>
-        let game = new Roulette();
-        document.getElementById('betRed').addEventListener('click', function() {
-            let result = game.bet(100, 'red');
-            document.getElementById('result').textContent = `You ${result > 0 ? 'won' : 'lost'} ${Math.abs(result)}`;
-        });
-        document.getElementById('betBlack').addEventListener('click', function() {
-            let result = game.bet(100, 'black');
-            document.getElementById('result').textContent = `You ${result > 0 ? 'won' : 'lost'} ${Math.abs(result)}`;
-        });
-        document.getElementById('betNumber').addEventListener('click', function() {
-            let number = document.getElementById('numberInput').value;
-            let result = game.bet(100, number);
-            document.getElementById('result').textContent = `You ${result > 0 ? 'won' : 'lost'} ${Math.abs(result)}`;
-        });
-    </script>
+    <form action="/bet" method="post">
+        <input type="hidden" name="guess" value="red">
+        <input type="submit" value="Bet on Red">
+    </form>
+    <form action="/bet" method="post">
+        <input type="hidden" name="guess" value="black">
+        <input type="submit" value="Bet on Black">
+    </form>
+    <form action="/bet" method="post">
+        <input type="number" name="guess" min="0" max="36">
+        <input type="submit" value="Bet on Number">
+    </form>
+    <p id="result"><%= result %></p>
 </body>
 </html>
