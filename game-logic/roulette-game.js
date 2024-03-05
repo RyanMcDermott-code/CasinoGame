@@ -1,4 +1,7 @@
+const Player = require('../game-logic/player.js');
+ 
 class Roulette {
+    player = new Player();
     constructor() {
         this.numbers = Array.from({length: 37}, (_, i) => i);
         this.colors = Array.from({length: 37}, (_, i) => i % 2 === 0 ? 'black' : 'red');
@@ -9,16 +12,17 @@ class Roulette {
         return Math.floor(Math.random() * this.numbers.length);
     }
 
-    bet(amount, guess) {
+    bet(player, guess, amount) {
         let result = this.spin();
-        if (guess === this.colors[result] || guess == result) {
-            return amount;
+        const isWin = guess === this.colors[result] || guess == result;
+        const odds = isWin ? 35 : 0; 
+        if (isWin) {
+            player.winBet(amount, odds);
         } else {
-            return -amount;
+            player.loseBet(amount);
         }
+        return isWin;
     }
+    
 }
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = Roulette;
-}
+module.exports = Roulette;

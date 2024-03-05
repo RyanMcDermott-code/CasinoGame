@@ -5,18 +5,29 @@
 </head>
 <body>
     <h1>Roulette Game</h1>
+    <p>Your money: <%= money %></p>
+    
     <form action="/games/roulette" method="post">
         <input type="hidden" name="guess" value="red">
+        <label for="amount-red">Bet Amount:</label>
+        <input type="number" id="amount-red" name="amount" min="1" required>
         <input type="submit" value="Bet on Red">
     </form>
+    
     <form action="/games/roulette" method="post">
         <input type="hidden" name="guess" value="black">
+        <label for="amount-black">Bet Amount:</label>
+        <input type="number" id="amount-black" name="amount" min="1" required>
         <input type="submit" value="Bet on Black">
     </form>
+    
     <form action="/games/roulette" method="post">
-        <input type="number" name="guess" min="0" max="36">
+        <input type="number" name="guess" min="0" max="36" placeholder="Enter a number (0-36)" required>
+        <label for="amount-number">Bet Amount:</label>
+        <input type="number" id="amount-number" name="amount" min="1" required>
         <input type="submit" value="Bet on Number">
     </form>
+    
     <p id="result"><%= result %></p>
 </body>
 </html>

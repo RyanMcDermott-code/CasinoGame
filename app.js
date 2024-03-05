@@ -1,11 +1,31 @@
 const express = require('express');
 const path = require('path');
+const session = require('express-session');
 const app = express();
 const port = 3000;
 
 const Roulette = require('./game-logic/roulette-game');
+const Player = require('./game-logic/player.js');
 
 let game = new Roulette();
+
+app.use(session({
+  secret: 'secret key',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+    if (req.session.player) {
+      let tempPlayer = new Player();
+      Object.assign(tempPlayer, req.session.player);
+      req.session.player = tempPlayer;
+    } else {
+      req.session.player = new Player();
+    }
+    next();
+  });
+  
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +38,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/bank', (req, res) => {
-    res.render('bank');
+    res.render('bank', { money: req.session.player.getMoney() });
 });
 
 app.get('/games', (req, res) => {
@@ -29,19 +49,28 @@ app.get('/games/craps', (req, res) => {
     res.render('craps-game', { result: '' });
 });
 
-app.all('/games/roulette', (req, res) => {
-    if (req.method === 'POST') {
-        let { guess } = req.body;
-        let result = game.bet(100, guess);
-        res.render('roulette-game', { result: `You ${result > 0 ? 'won' : 'lost'} ${Math.abs(result)}` });
+app.get('/games/roulette', (req, res) => {
+    let currentMoney = req.session.player.getMoney();
+    res.render('roulette-game', { result: '', money: currentMoney });
+});
+
+
+app.post('/games/roulette', (req, res) => {
+    let { guess, amount } = req.body; 
+    amount = parseInt(amount, 10); 
+
+    if (!Number.isNaN(amount) && amount > 0) {
+        const isWin = game.bet(req.session.player, guess, amount);
+        let currentMoney = req.session.player.getMoney();
+        let resultMessage = isWin ? `You won ${amount * 35}` : `You lost ${amount}`;
+        res.render('roulette-game', { result: resultMessage, money: currentMoney });
     } else {
-        res.render('roulette-game', { result: '' });
+        let currentMoney = req.session.player.getMoney();
+        res.render('roulette-game', { result: 'Invalid bet amount.', money: currentMoney });
     }
 });
 
-app.get('/games/craps', (req, res) => {
-    res.render('craps');
-});
+
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
