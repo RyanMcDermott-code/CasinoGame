@@ -25,14 +25,18 @@ app.get('/games', (req, res) => {
     res.render('game-selection');
 });
 
-app.get('/games/roulette', (req, res) => {
-    res.render('roulette-game', { result: '' });
+app.get('/games/craps', (req, res) => {
+    res.render('craps-game', { result: '' });
 });
 
-app.post('/bet', (req, res) => {
-    let { guess } = req.body;
-    let result = game.bet(100, guess);
-    res.render('roulette-game', { result: `You ${result > 0 ? 'won' : 'lost'} ${Math.abs(result)}` });
+app.all('/games/roulette', (req, res) => {
+    if (req.method === 'POST') {
+        let { guess } = req.body;
+        let result = game.bet(100, guess);
+        res.render('roulette-game', { result: `You ${result > 0 ? 'won' : 'lost'} ${Math.abs(result)}` });
+    } else {
+        res.render('roulette-game', { result: '' });
+    }
 });
 
 app.get('/games/craps', (req, res) => {

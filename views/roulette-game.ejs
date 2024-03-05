@@ -5,15 +5,15 @@
 </head>
 <body>
     <h1>Roulette Game</h1>
-    <form action="/bet" method="post">
+    <form action="/games/roulette" method="post">
         <input type="hidden" name="guess" value="red">
         <input type="submit" value="Bet on Red">
     </form>
-    <form action="/bet" method="post">
+    <form action="/games/roulette" method="post">
         <input type="hidden" name="guess" value="black">
         <input type="submit" value="Bet on Black">
     </form>
-    <form action="/bet" method="post">
+    <form action="/games/roulette" method="post">
         <input type="number" name="guess" min="0" max="36">
         <input type="submit" value="Bet on Number">
     </form>
