@@ -136,3 +136,28 @@ input[type="submit"]:hover {
     font-size: 20px;
     color: #555;
 }
+
+.balance {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3 ease;   
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
