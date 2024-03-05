@@ -12,6 +12,7 @@ class Roulette {
         return Math.floor(Math.random() * this.numbers.length);
     }
 
+    
     bet(amount, betType, betValue) {
         let result = this.spin();
         let payout = 0;
