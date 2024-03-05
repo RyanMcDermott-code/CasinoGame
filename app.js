@@ -60,7 +60,7 @@ app.post('/games/roulette', (req, res) => {
     amount = parseInt(amount, 10); 
 
     if (!Number.isNaN(amount) && amount > 0) {
-        const isWin = game.bet(req.session.player, guess, amount);
+        const isWin = game.rouletteGame(req.session.player.getMoney(), guess, amount);
         let currentMoney = req.session.player.getMoney();
         let resultMessage = isWin ? `You won ${amount * 35}` : `You lost ${amount}`;
         res.render('roulette-game', { result: resultMessage, money: currentMoney });

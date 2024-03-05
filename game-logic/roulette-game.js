@@ -1,8 +1,7 @@
-let amount = 100;
-let betType = ['color', 'oddEven', 'highLow'];
-let betValue =['red', 'odd', 'low']
+const Player = require('../game-logic/player')
 
 class Roulette {
+    player = new Player;
     constructor() {
         this.numbers = Array.from({length: 37}, (_, i) => i);
         this.colors = Array.from({length: 37}, (_, i) => i % 2 == 0 ? 'black' : 'red');
@@ -82,18 +81,16 @@ class Roulette {
         
         return payout;
     }
-    rouletteGame() {
+    rouletteGame(amount, betType, betValue) {
         let totalPayout = 0;
         for (let i = 0; i < betType.length; i++) {
             totalPayout += this.bet(amount, betType[i], betValue[i]);
         }
-        return totalPayout;
+        console.log(totalPayout)
+        return this.player.money += totalPayout;
     }
 }
 
 if (typeof module != 'undefined' && module.exports) {
     module.exports = Roulette;
 }
-
-let roulette = new Roulette();
-console.log("Total Payout:", roulette.rouletteGame());
