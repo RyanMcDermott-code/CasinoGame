@@ -3,39 +3,36 @@
     <head>
         <title>Casino Game Selection</title>
         <link rel="stylesheet" type="text/css" href="/css/styles.css">
-
-        <body>
-            <div class="container1">
-                <h1>Casino Game Selection</h1>
-                <form action="#" method="post">
-                    <div class="game-item">
-                        <img src="/CasinoAssets/Overall UI/ComingSoonStamp.png" alt="Slots">
-                        <span class="game-name">Slots</span>
-                        <input type="radio" name="game" value="slots">
-                    </div>
-                    <div class="game-item">
-                        <img src="/CasinoAssets/Overall UI/Roulette Icon.png" alt="Roulette">
-                        <span class="game-name">Roulette</span>
-                        <input type="radio" name="game" value="roulette">
-                    </div>
-                    <div class="game-item">
-                        <img src="/CasinoAssets/Overall UI/ComingSoonStamp.png" alt="Blackjack">
-                        <span class="game-name">Blackjack</span>
-                        <input type="radio" name="game" value="blackjack">
-                    </div>
-                    <div class="game-item">
-                        <img src="/CasinoAssets/Overall UI/Craps Icon.png" alt="Craps">
-                        <span class="game-name">Craps</span>
-                        <input type="radio" name="game" value="craps">
-                    </div>
-                    <div class="game-item">
-                        <img src="/CasinoAssets/Overall UI/ComingSoonStamp.png" alt="Poker">
-                        <span class="game-name">Poker</span>
-                        <input type="radio" name="game" value="poker">
-                    </div>
-                    <input type="submit" value="play">
-                </form>
-            </div>
-        </body>
     </head>
+    <body>
+        <div class="container1">
+            <h1>Casino Game Selection</h1>
+            <div class="game-item">
+                <img src="/CasinoAssets/Overall UI/ComingSoonStamp.png" alt="Slots">
+                <span class="game-name">Slots</span>
+                <button onclick="window.location.href='/games/slots'">Play</button>
+            </div>
+            <div class="game-item">
+                <img src="/CasinoAssets/Overall UI/Roulette Icon.png" alt="Roulette">
+                <span class="game-name">Roulette</span>
+                <button onclick="window.location.href='/games/roulette'">Play</button>
+            </div>
+            <div class="game-item">
+                <img src="/CasinoAssets/Overall UI/ComingSoonStamp.png" alt="Blackjack">
+                <span class="game-name">Blackjack</span>
+                <button onclick="window.location.href='/games/blackjack'">Play</button>
+            </div>
+            <div class="game-item">
+                <img src="/CasinoAssets/Overall UI/Craps Icon.png" alt="Craps">
+                <span class="game-name">Craps</span>
+                <button onclick="window.location.href='/games/craps'">Play</button>
+            </div>
+            <div class="game-item">
+                <img src="/CasinoAssets/Overall UI/ComingSoonStamp.png" alt="Poker">
+                <span class="game-name">Poker</span>
+                <button onclick="window.location.href='/games/poker'">Play</button>
+            </div>
+        </div>
+        <script src="/js/script.js"></script>
+    </body>
 </html>

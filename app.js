@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use('/CasinoAssets', express.static(path.join(__dirname, 'public/CasinoAssets')));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.render('index');
