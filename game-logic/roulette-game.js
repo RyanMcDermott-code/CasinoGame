@@ -2,8 +2,8 @@ const Player = require('../game-logic/player')
 const {query} = require("express");
 
 class Roulette {
-    player = new Player;
     constructor() {
+        this.player = new Player;
         this.numbers = Array.from({length: 37}, (_, i) => i);
         this.colors = Array.from({length: 37}, (_, i) => i % 2 == 0 ? 'black' : 'red');
         this.colors[0] = 'green';
