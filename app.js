@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     }
     next();
   });
-  
+
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));

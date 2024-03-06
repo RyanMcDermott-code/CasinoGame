@@ -1,4 +1,5 @@
 const Player = require('../game-logic/player')
+const {query} = require("express");
 
 class Roulette {
     player = new Player;
@@ -15,7 +16,7 @@ class Roulette {
     bet(amount, betType, betValue) {
         let result = this.spin();
         let payout = 0;
-        
+
         switch (betType) {
             case 'color':
                 if (betValue == this.colors[result]) {
@@ -78,7 +79,7 @@ class Roulette {
                 }
                 break;
         }
-        
+
         return payout;
     }
     rouletteGame(amount, betType, betValue) {
